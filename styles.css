@@ -20,7 +20,7 @@ body {
     background-color: #ffe5fb;
 }
 
-input {
+#input {
     width: 100%;
     box-sizing: border-box;
     height: 30%;
