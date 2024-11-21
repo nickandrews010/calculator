@@ -26,7 +26,14 @@ body {
     height: 30%;
     background-color: #ffe5fb;
     border: 0;
-
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    font-size: 60px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 350;
 }
 
 #buttonContainer {
