@@ -1,6 +1,7 @@
 let num1 = 0;
 let num2 = 0;
 let operator = '';
+let answer = 0;
 let currentNum = num1;
 
 function operate(a, b, operator) {
@@ -11,7 +12,7 @@ function operate(a, b, operator) {
             return subtract(a, b);
         case '*':
             return multiply(a, b);
-        case '÷':
+        case '/':
             return divide(a, b);
     }
 }
@@ -33,6 +34,7 @@ function divide(a, b) {
 }
 
 function populate(input) {
+
     // If the current number is 0, set the inputted number to currentNumber
     if (currentNum === 0) {
         currentNum = input;
@@ -43,11 +45,6 @@ function populate(input) {
         currentNum = currentNum.toString();
         currentNum += input;
     }
-
-    
-    // console.log(num1);
-    // console.log(num2);
-    // if (currentNum == num1)
 
     display.textContent = currentNum;
 }
@@ -64,7 +61,7 @@ buttonContainer.addEventListener("click", (event) => {
         return;
     }
 
-    // console.log(pressedButton);
+    console.log(operator == true);
 
     switch (pressedButton) {
         case 'C':
@@ -97,13 +94,54 @@ buttonContainer.addEventListener("click", (event) => {
             break;
 
         case '÷':
-        case '−':
-        case '+':
-        case '×':
             num1 = +currentNum;
             currentNum = num2;
-            operator = pressedButton;
-            console.log(num1);
+            operator = '/';
+
+            console.log('Num1: ' + num1);
+            console.log('Num2: ' + num2);
+            console.log('Operator: ' + operator);
+
+            break;
+        case '−':
+            num1 = +currentNum;
+            currentNum = num2;
+            operator = '-';
+
+            console.log('Num1: ' + num1);
+            console.log('Num2: ' + num2);
+            console.log('Operator: ' + operator);
+
+            break;
+        case '+':
+            num1 = +currentNum;
+            currentNum = num2;
+            operator = '+';
+
+            console.log('Num1: ' + num1);
+            console.log('Num2: ' + num2);
+            console.log('Operator: ' + operator);
+
+            break;
+        case '×':
+            if (operator) {
+                num2 = +currentNum;
+                answer = operate(num1, num2, operator);
+                display.textContent = answer;
+                currentNum = answer;
+                num2 = 0;
+                operator = ''
+                break;
+            }
+            num1 = +currentNum;
+            currentNum = num2;
+            operator = '*';
+
+
+            console.log('Num1: ' + num1);
+            console.log('Num2: ' + num2);
+            console.log('Operator: ' + operator);
+
             break;
 
         case '.':
@@ -112,10 +150,20 @@ buttonContainer.addEventListener("click", (event) => {
             }
             display.textContent = currentNum;
             break;
-        
+
         case '=':
             num2 = +currentNum;
-            display.textContent = operate(num1, num2, operator);
+            answer = operate(num1, num2, operator);
+            display.textContent = answer;
+            currentNum = answer;
+            console.log('Num2: ' + num2);
+            console.log('Operator: ' + operator);
+            num2 = 0;
+            operator = '';
+
+            console.log('Num1: ' + num1);
+
+            console.log('Answer: ' + answer);
 
     };
 });
