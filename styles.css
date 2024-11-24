@@ -32,8 +32,9 @@ body {
     font-size: 60px;
     padding-right: 15px;
     padding-bottom: 0px;
-    font-family: "Poppins", sans-serif;
+    font-family: monospace;
     font-weight: 350;
+    overflow: hidden;
 }
 
 #buttonContainer {
